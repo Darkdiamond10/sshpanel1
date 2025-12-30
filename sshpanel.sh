@@ -241,10 +241,6 @@ tput cuu1 >&2 && tput dl1 >&2
 rm -f instala.*
 [[ -e /etc/folteto ]] && rm -f /etc/folteto
 [[ -e /bin/ejecutar/IPcgh ]] && rm -f /bin/ejecutar/IPcgh
-[[ ! -z $1 ]] && {
-[[ "$1" == "--ADMcgh" ]] && echo -e " ESPERE UN MOMENTO $1" || {
-exit&&exit
-}
 rm -f wget*
 [[ $(dpkg --get-selections|grep -w "curl"|head -1) ]] || _sleepColor '' 'apt-get -qq install curl -y'
 [[ $(dpkg --get-selections|grep -w "bzip2"|head -1) ]] || _sleepColor '' 'apt-get -qq install bzip2 -y'
@@ -606,9 +602,3 @@ read -p " $( echo -e "PRESIONA ENTER PARA FINALIZAR INSTALACION \n $(msg -bar3)"
 exit
 tput cuu1 && tput dl1
 tput cuu1 && tput dl1
-} || {
-echo -e " NO SE RECIVIO PARAMETROS "
-rm -f setup*
-rm -f /etc/folteto
-rm -rf /tmp/*
-}
